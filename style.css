@@ -3,12 +3,14 @@
    ========================================= */
 
 :root {
-    /* Цветовая палитра: Темный фон, яркие акценты */
-    --color-dark-bg: #111827; /* Темно-серый/синий */
-    --color-text-light: #f3f4f6; /* Светлый текст */
+    /* Цветовая палитра: Светлый фон, темный текст, яркие акценты */
+    --color-light-bg: #f8fafc; /* Очень светлый фон (почти белый) */
+    --color-text-dark: #1f2937; /* Темный текст */
     --color-primary-accent: #10b981; /* Электрический зеленый (Primary CTA) */
     --color-secondary-accent: #6366f1; /* Фиолетовый (Secondary CTA/Links) */
-    --color-card-bg: #1f2937; /* Фон карточек */
+    --color-card-bg: #ffffff; /* Белый фон карточек */
+    --color-shadow: rgba(0, 0, 0, 0.05); /* Легкая тень */
+    --color-gradient-end: #e0f2f1; /* Светлый конец градиента для фона */
 
     /* Шрифты */
     --font-sans: 'Inter', 'Segoe UI', 'Roboto', 'Helvetica Neue', sans-serif;
@@ -23,9 +25,11 @@
 
 body {
     font-family: var(--font-sans);
-    background-color: var(--color-dark-bg);
-    color: var(--color-text-light);
+    /* Создаем светлый фон с легким градиентом, как в мокапе */
+    background: linear-gradient(180deg, var(--color-light-bg) 0%, var(--color-gradient-end) 100%);
+    color: var(--color-text-dark);
     line-height: 1.6;
+    min-height: 100vh;
 }
 
 /* Общий контейнер для центрирования контента */
@@ -39,6 +43,7 @@ h1, h2, h3 {
     font-weight: 800;
     line-height: 1.1;
     margin-bottom: 20px;
+    color: var(--color-text-dark); /* Обеспечиваем темный цвет заголовков */
 }
 
 h1 {
@@ -55,17 +60,27 @@ p {
     margin-bottom: 15px;
 }
 
+a {
+    color: var(--color-secondary-accent);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+a:hover {
+    color: var(--color-primary-accent);
+}
+
 /* =========================================
    2. NAVIGATION & HEADER
    ========================================= */
 
 .header {
-    background-color: rgba(17, 24, 39, 0.95); /* Слегка прозрачный фон */
+    background-color: rgba(255, 255, 255, 0.95); /* Белая с прозрачностью */
     padding: 15px 0;
     position: sticky;
     top: 0;
     z-index: 1000;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 8px var(--color-shadow);
 }
 
 .nav-bar {
@@ -86,15 +101,13 @@ p {
 }
 
 .nav-menu ul li a {
-    text-decoration: none;
-    color: var(--color-text-light);
+    color: var(--color-text-dark); /* Темный цвет ссылок */
     margin-left: 25px;
     padding: 5px 10px;
-    transition: color 0.3s, border-bottom 0.3s;
 }
 
 .nav-menu ul li a:hover {
-    color: var(--color-primary-accent);
+    color: var(--color-secondary-accent);
 }
 
 /* Стилизация ссылки "Investor Deck" в навигации */
@@ -105,11 +118,12 @@ p {
     border-radius: 6px;
     padding: 8px 15px !important;
     margin-left: 30px !important;
+    transition: background-color 0.3s;
 }
 
 .cta-deck-link:hover {
     background-color: var(--color-primary-accent);
-    color: var(--color-dark-bg) !important;
+    color: var(--color-card-bg) !important;
 }
 
 /* =========================================
@@ -130,8 +144,8 @@ p {
 
 .btn-primary {
     background-color: var(--color-primary-accent);
-    color: var(--color-dark-bg);
-    box-shadow: 0 4px 15px rgba(16, 185, 129, 0.5); /* Неоновый эффект */
+    color: var(--color-card-bg); /* Белый текст на зеленой кнопке */
+    box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4); 
 }
 
 .btn-primary:hover {
@@ -148,7 +162,7 @@ p {
 
 .btn-secondary:hover {
     background-color: var(--color-secondary-accent);
-    color: var(--color-dark-bg);
+    color: var(--color-card-bg);
     transform: translateY(-2px);
 }
 
@@ -176,6 +190,7 @@ p {
 
 .hero-text h1 {
     margin-top: 0;
+    /* Градиентный заголовок сохраняется для акцента */
     background: linear-gradient(135deg, var(--color-primary-accent) 0%, #6366f1 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -191,7 +206,6 @@ p {
 
 .hero-visual {
     flex: 1;
-    /* Здесь вы можете использовать placeholder или реальное изображение */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -211,7 +225,9 @@ p {
     align-items: center;
     font-size: 1.1rem;
     font-weight: 600;
-    opacity: 0.7;
+    opacity: 0.8;
+    color: var(--color-text-dark);
+    box-shadow: 0 10px 30px var(--color-shadow);
 }
 
 /* =========================================
@@ -220,6 +236,7 @@ p {
 
 section {
     padding: 80px 0;
+    background-color: transparent; /* Секции прозрачны, чтобы видеть фон body */
 }
 
 /* =========================================
@@ -227,9 +244,8 @@ section {
    ========================================= */
 
 .problem-section {
-    background-color: var(--color-dark-bg);
-    border-top: 1px solid #1f2937;
-    border-bottom: 1px solid #1f2937;
+    /* Удаляем лишние границы на светлом фоне */
+    border: none; 
 }
 
 .problem-points {
@@ -242,10 +258,11 @@ section {
 .point {
     flex: 1;
     max-width: 300px;
-    padding: 20px;
-    border-radius: 8px;
-    background-color: var(--color-card-bg);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    padding: 25px;
+    border-radius: 12px;
+    background-color: var(--color-card-bg); /* Белый фон */
+    box-shadow: 0 4px 15px var(--color-shadow);
+    transition: transform 0.3s;
 }
 
 .point h3 {
@@ -281,12 +298,13 @@ section {
     background-color: var(--color-card-bg);
     border-radius: 12px;
     border-bottom: 4px solid var(--color-secondary-accent);
-    transition: transform 0.3s, border-color 0.3s;
+    transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
 }
 
 .feature-card:hover {
     transform: translateY(-10px);
     border-color: var(--color-primary-accent);
+    box-shadow: 0 10px 20px var(--color-shadow);
 }
 
 .feature-card h3 {
@@ -302,12 +320,12 @@ section {
 
 .traction-section {
     text-align: center;
-    background-color: #1f2937;
+    background-color: transparent;
     padding: 100px 0;
 }
 
 .traction-section h2 {
-    color: var(--color-text-light);
+    color: var(--color-text-dark);
 }
 
 .metrics-grid {
@@ -347,7 +365,7 @@ section {
    ========================================= */
 
 .team-section {
-    background-color: var(--color-dark-bg);
+    background-color: transparent;
 }
 
 .team-grid {
@@ -398,14 +416,15 @@ section {
    ========================================= */
 
 .footer {
-    background-color: #0c1017;
+    background-color: #f0f4f8; /* Слегка серый фон футера */
     padding: 60px 0 20px;
     text-align: center;
-    border-top: 1px solid var(--color-card-bg);
+    border-top: 1px solid #d1d5db;
 }
 
 .footer h3 {
     font-size: 2rem;
+    /* Сохраняем градиент для акцента */
     background: linear-gradient(90deg, #ff4d4d 0%, #6366f1 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -416,6 +435,7 @@ section {
     font-size: 1.1rem;
     opacity: 0.8;
     margin-bottom: 30px;
+    color: var(--color-text-dark);
 }
 
 .download-deck {
@@ -423,7 +443,7 @@ section {
 }
 
 .social-links a {
-    color: var(--color-text-light);
+    color: var(--color-text-dark);
     text-decoration: none;
     margin: 0 15px;
     opacity: 0.7;
@@ -438,6 +458,7 @@ section {
     margin-top: 40px;
     font-size: 0.8rem;
     opacity: 0.5;
+    color: var(--color-text-dark);
 }
 
 /* =========================================
@@ -450,7 +471,7 @@ section {
         text-align: center;
     }
     .hero-text {
-        order: 2; /* Поместить текст после визуала на мобильных */
+        order: 2;
     }
     .hero-visual {
         order: 1;
@@ -468,7 +489,7 @@ section {
         gap: 15px;
     }
     .btn-secondary {
-        margin-left: 0; /* Убрать отступ для кнопок друг под другом */
+        margin-left: 0;
     }
 
     .problem-points, .feature-list, .metrics-grid, .team-grid {
