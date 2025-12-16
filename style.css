@@ -1,0 +1,490 @@
+/* =========================================
+   1. GLOBAL STYLES & TYPOGRAPHY
+   ========================================= */
+
+:root {
+    /* Цветовая палитра: Темный фон, яркие акценты */
+    --color-dark-bg: #111827; /* Темно-серый/синий */
+    --color-text-light: #f3f4f6; /* Светлый текст */
+    --color-primary-accent: #10b981; /* Электрический зеленый (Primary CTA) */
+    --color-secondary-accent: #6366f1; /* Фиолетовый (Secondary CTA/Links) */
+    --color-card-bg: #1f2937; /* Фон карточек */
+
+    /* Шрифты */
+    --font-sans: 'Inter', 'Segoe UI', 'Roboto', 'Helvetica Neue', sans-serif;
+}
+
+/* Сброс стилей и базовые настройки */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-sans);
+    background-color: var(--color-dark-bg);
+    color: var(--color-text-light);
+    line-height: 1.6;
+}
+
+/* Общий контейнер для центрирования контента */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+h1, h2, h3 {
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: 3.5rem; /* Очень крупный заголовок */
+}
+
+h2 {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+p {
+    margin-bottom: 15px;
+}
+
+/* =========================================
+   2. NAVIGATION & HEADER
+   ========================================= */
+
+.header {
+    background-color: rgba(17, 24, 39, 0.95); /* Слегка прозрачный фон */
+    padding: 15px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.nav-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: var(--color-primary-accent); /* Логотип акцентным цветом */
+}
+
+.nav-menu ul {
+    list-style: none;
+    display: flex;
+}
+
+.nav-menu ul li a {
+    text-decoration: none;
+    color: var(--color-text-light);
+    margin-left: 25px;
+    padding: 5px 10px;
+    transition: color 0.3s, border-bottom 0.3s;
+}
+
+.nav-menu ul li a:hover {
+    color: var(--color-primary-accent);
+}
+
+/* Стилизация ссылки "Investor Deck" в навигации */
+.cta-deck-link {
+    color: var(--color-primary-accent) !important;
+    font-weight: 700;
+    border: 1px solid var(--color-primary-accent);
+    border-radius: 6px;
+    padding: 8px 15px !important;
+    margin-left: 30px !important;
+}
+
+.cta-deck-link:hover {
+    background-color: var(--color-primary-accent);
+    color: var(--color-dark-bg) !important;
+}
+
+/* =========================================
+   3. BUTTONS (CTAs)
+   ========================================= */
+
+.btn {
+    display: inline-block;
+    padding: 12px 30px;
+    font-size: 1rem;
+    font-weight: 700;
+    border-radius: 8px;
+    text-decoration: none;
+    text-align: center;
+    transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
+    border: none;
+}
+
+.btn-primary {
+    background-color: var(--color-primary-accent);
+    color: var(--color-dark-bg);
+    box-shadow: 0 4px 15px rgba(16, 185, 129, 0.5); /* Неоновый эффект */
+}
+
+.btn-primary:hover {
+    background-color: #0d9468;
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--color-secondary-accent);
+    border: 2px solid var(--color-secondary-accent);
+    margin-left: 15px;
+}
+
+.btn-secondary:hover {
+    background-color: var(--color-secondary-accent);
+    color: var(--color-dark-bg);
+    transform: translateY(-2px);
+}
+
+
+/* =========================================
+   4. HERO SECTION
+   ========================================= */
+
+.hero-section {
+    padding: 80px 0;
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+}
+
+.hero-content {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.hero-text {
+    flex: 1;
+}
+
+.hero-text h1 {
+    margin-top: 0;
+    background: linear-gradient(135deg, var(--color-primary-accent) 0%, #6366f1 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero-text .subtitle {
+    font-size: 1.25rem;
+    font-weight: 300;
+    max-width: 550px;
+    opacity: 0.9;
+    margin-bottom: 40px;
+}
+
+.hero-visual {
+    flex: 1;
+    /* Здесь вы можете использовать placeholder или реальное изображение */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Placeholder для изображения мокапа */
+.hero-visual::before {
+    content: "🖥️ [Dashboard Mockup Image Placeholder]";
+    display: block;
+    width: 100%;
+    height: 350px;
+    background-color: var(--color-card-bg);
+    border-radius: 12px;
+    border: 3px solid var(--color-primary-accent);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.1rem;
+    font-weight: 600;
+    opacity: 0.7;
+}
+
+/* =========================================
+   5. GENERAL SECTIONS
+   ========================================= */
+
+section {
+    padding: 80px 0;
+}
+
+/* =========================================
+   6. PROBLEM SECTION
+   ========================================= */
+
+.problem-section {
+    background-color: var(--color-dark-bg);
+    border-top: 1px solid #1f2937;
+    border-bottom: 1px solid #1f2937;
+}
+
+.problem-points {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    text-align: center;
+}
+
+.point {
+    flex: 1;
+    max-width: 300px;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: var(--color-card-bg);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.point h3 {
+    color: #ef4444; /* Цвет ошибки/проблемы */
+    margin-bottom: 10px;
+}
+
+.intro-text {
+    font-size: 1.1rem;
+    text-align: center;
+    margin-bottom: 60px;
+    opacity: 0.8;
+}
+
+/* =========================================
+   7. FEATURES SECTION (Solution)
+   ========================================= */
+
+.features-section h2 {
+    color: var(--color-primary-accent);
+}
+
+.feature-list {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+}
+
+.feature-card {
+    flex: 1;
+    max-width: 350px;
+    padding: 30px;
+    background-color: var(--color-card-bg);
+    border-radius: 12px;
+    border-bottom: 4px solid var(--color-secondary-accent);
+    transition: transform 0.3s, border-color 0.3s;
+}
+
+.feature-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--color-primary-accent);
+}
+
+.feature-card h3 {
+    color: var(--color-secondary-accent);
+    margin-bottom: 15px;
+    font-size: 1.4rem;
+    font-weight: 700;
+}
+
+/* =========================================
+   8. TRACTION SECTION (Metrics)
+   ========================================= */
+
+.traction-section {
+    text-align: center;
+    background-color: #1f2937;
+    padding: 100px 0;
+}
+
+.traction-section h2 {
+    color: var(--color-text-light);
+}
+
+.metrics-grid {
+    display: flex;
+    justify-content: space-around;
+    margin: 50px 0;
+}
+
+.metric-item {
+    padding: 20px;
+}
+
+.metric-number {
+    font-size: 4rem;
+    font-weight: 900;
+    color: var(--color-primary-accent);
+    display: block;
+    margin-bottom: 5px;
+}
+
+.metric-label {
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    opacity: 0.7;
+}
+
+.investor-message {
+    max-width: 600px;
+    margin: 40px auto 0;
+    font-style: italic;
+    font-size: 1.1rem;
+    color: var(--color-secondary-accent);
+}
+
+/* =========================================
+   9. TEAM SECTION
+   ========================================= */
+
+.team-section {
+    background-color: var(--color-dark-bg);
+}
+
+.team-grid {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 40px;
+}
+
+.team-member {
+    text-align: center;
+    max-width: 250px;
+}
+
+.team-member::before {
+    /* Placeholder для фото */
+    content: "👤";
+    font-size: 4rem;
+    display: block;
+    margin: 0 auto 15px;
+    width: 120px;
+    height: 120px;
+    background-color: var(--color-card-bg);
+    border-radius: 50%;
+    line-height: 120px;
+    color: var(--color-secondary-accent);
+    border: 3px solid var(--color-secondary-accent);
+}
+
+.name {
+    font-size: 1.5rem;
+    margin-bottom: 5px;
+    color: var(--color-primary-accent);
+}
+
+.role {
+    font-style: italic;
+    opacity: 0.7;
+    margin-bottom: 10px;
+}
+
+.bio {
+    font-size: 0.95rem;
+}
+
+/* =========================================
+   10. FOOTER
+   ========================================= */
+
+.footer {
+    background-color: #0c1017;
+    padding: 60px 0 20px;
+    text-align: center;
+    border-top: 1px solid var(--color-card-bg);
+}
+
+.footer h3 {
+    font-size: 2rem;
+    background: linear-gradient(90deg, #ff4d4d 0%, #6366f1 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 10px;
+}
+
+.footer-content p {
+    font-size: 1.1rem;
+    opacity: 0.8;
+    margin-bottom: 30px;
+}
+
+.download-deck {
+    margin-bottom: 30px;
+}
+
+.social-links a {
+    color: var(--color-text-light);
+    text-decoration: none;
+    margin: 0 15px;
+    opacity: 0.7;
+}
+
+.social-links a:hover {
+    color: var(--color-primary-accent);
+    opacity: 1;
+}
+
+.copyright {
+    margin-top: 40px;
+    font-size: 0.8rem;
+    opacity: 0.5;
+}
+
+/* =========================================
+   11. RESPONSIVENESS (Для мобильных устройств)
+   ========================================= */
+
+@media (max-width: 900px) {
+    .hero-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    .hero-text {
+        order: 2; /* Поместить текст после визуала на мобильных */
+    }
+    .hero-visual {
+        order: 1;
+    }
+    .hero-text h1 {
+        font-size: 2.5rem;
+    }
+    .hero-visual::before {
+        height: 250px;
+    }
+    
+    .hero-ctas {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+    .btn-secondary {
+        margin-left: 0; /* Убрать отступ для кнопок друг под другом */
+    }
+
+    .problem-points, .feature-list, .metrics-grid, .team-grid {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .nav-bar {
+        flex-direction: column;
+    }
+    .nav-menu ul {
+        margin-top: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .nav-menu ul li a {
+        margin: 5px 10px;
+    }
+}
